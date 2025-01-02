@@ -5,12 +5,12 @@
 class ExampleZig < Formula
   desc "Example zig release."
   homepage "https://goreleaser.com"
-  version "0.1.5"
+  version "0.1.6"
   license "MIT"
 
   on_macos do
-    url "https://github.com/goreleaser/example-zig/releases/download/v0.1.5/example_Darwin_all.tar.gz"
-    sha256 "61d3cc3d837a1d0c393d1b1ccc9437e5eb6dce1b9480988d3e15d90e6800d1f8"
+    url "https://github.com/goreleaser/example-zig/releases/download/v0.1.6/example_Darwin_all.tar.gz"
+    sha256 "fe0b5ad7d3a7c13e27853c302a0985ee30d9a679e2a26fd63606fbef9099660d"
 
     def install
       bin.install "example"
@@ -20,8 +20,8 @@ class ExampleZig < Formula
   on_linux do
     if Hardware::CPU.arm?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/goreleaser/example-zig/releases/download/v0.1.5/example_Linux_arm64.tar.gz"
-        sha256 "e84585ca4adafdc557b441c85de7b35e73447acdb488614cee23aa340a2d0b30"
+        url "https://github.com/goreleaser/example-zig/releases/download/v0.1.6/example_Linux_arm64.tar.gz"
+        sha256 "a889aa1e9c789afaf7896dd02121b07063489a3f9fd7ebc83062612d5e4efa91"
 
         def install
           bin.install "example"
