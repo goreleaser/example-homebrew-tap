@@ -5,27 +5,31 @@
 class ExampleRust < Formula
   desc "Example rust release."
   homepage "https://goreleaser.com"
-  version "0.1.2"
+  version "0.1.4"
   license "MIT"
 
   on_macos do
-    url "https://github.com/goreleaser/example-rust/releases/download/v0.1.2/example_Darwin_all.tar.gz"
-    sha256 "899d9b2f9103cc356eac14bf0bc4c2e5b7bae2fd3fa3c72bde4408e0ed8837eb"
+    url "https://github.com/goreleaser/example-rust/releases/download/v0.1.4/example_Darwin_all.tar.gz"
+    sha256 "d33406bcbf5d522b8a1f199ac1fd6077102195a80b07dadf019c0c6f935523ba"
 
-    def install
+    define_method(:install) do
       bin.install "example"
     end
   end
 
   on_linux do
-    if Hardware::CPU.arm?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/goreleaser/example-rust/releases/download/v0.1.2/example_Linux_arm64.tar.gz"
-        sha256 "89772ec1348e55ef55c7a35f90c27a7ef8d13d6de71c6ecea743c3b000d39eb2"
-
-        def install
-          bin.install "example"
-        end
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/goreleaser/example-rust/releases/download/v0.1.4/example_Linux_x86_64.tar.gz"
+      sha256 "72ad3b32805bcb7d0befd64b4f164e4b7f197dc3a8309b6542ea000ebc44dab6"
+      define_method(:install) do
+        bin.install "example"
+      end
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/goreleaser/example-rust/releases/download/v0.1.4/example_Linux_arm64.tar.gz"
+      sha256 "31491a7e4d5b2c510d2585c1c462e3488625c807e777c5c3b7781e519f853ab8"
+      define_method(:install) do
+        bin.install "example"
       end
     end
   end
